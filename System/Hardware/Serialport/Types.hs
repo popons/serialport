@@ -17,12 +17,12 @@ data CommSpeed
   | CS38400
   | CS57600
   | CS115200
-  deriving (Show, Eq, Bounded)
+  deriving (Show, Eq, Bounded, Enum, Read)
 
 
-data StopBits = One | Two deriving (Show, Eq, Bounded)
-data Parity = Even | Odd | NoParity deriving (Show, Eq, Bounded)
-data FlowControl = Software | NoFlowControl deriving (Show, Eq, Bounded)
+data StopBits = One | Two deriving (Show, Eq, Bounded, Enum , Read)
+data Parity = Even | Odd | NoParity deriving (Show, Eq, Bounded, Enum, Read)
+data FlowControl = Software | NoFlowControl deriving (Show, Eq, Bounded, Enum, Read)
 
 data SerialPortSettings = SerialPortSettings {
                       commSpeed    :: CommSpeed,   -- ^ baudrate
@@ -31,7 +31,7 @@ data SerialPortSettings = SerialPortSettings {
                       parity       :: Parity,      -- ^ Type of parity
                       flowControl  :: FlowControl, -- ^ Type of flowcontrol
                       timeout      :: Int          -- ^ Timeout when receiving a char in tenth of seconds
-                  }
+                  } deriving (Show, Eq, Read)
 
 
 -- | Most commonly used configuration
